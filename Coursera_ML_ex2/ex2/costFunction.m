@@ -25,7 +25,7 @@ g_sigmoid = 1./(1+exp(-hypothesis));
 
 J= 1/m*sum(-y.*log(g_sigmoid)-(1-y).*log(1-g_sigmoid));
 
-grad = 1/m*sum(g_sigmoid-y)*X;
+grad = 1/m.*X'*(g_sigmoid-y);
 
 
 
