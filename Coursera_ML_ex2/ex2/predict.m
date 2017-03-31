@@ -16,16 +16,14 @@ p = zeros(m, 1);
 %
 
 
+hypothesis = sigmoid(X*theta);
 for i=1:m;
-
-  if sigmoid(X(i,1)*theta(1)+X(i,2)*theta(2)+X(i,3)*theta(3))>=0.5
+    if hypothesis(i)>=0.5
     p(i)=1;
   else
     p(i)=0;
   end
-
 end
-
 
 % =========================================================================
 
