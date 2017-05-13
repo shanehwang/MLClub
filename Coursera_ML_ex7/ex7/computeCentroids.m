@@ -41,23 +41,27 @@ centroids = zeros(K, n);
 
 %centroidsds=[mean(c1);mean(c2);mean(c3)]
 
+%for i=1:K
+%  tmp = zeros(1,n);
+%  count = 0;
+%  for j = 1: m
+%    if (idx(j) == i)
+%      tmp += X(j,:); 
+%      count ++;
+%    end
+%  end
+%  cen = tmp ./ count;
+%  centroids(i,:) = tmp ./ count;
+%end
 
-%c1=[];
-%c2=[];
-%c3=[];
-c=zeros(0,0,K);
-  
-for i =1:m
-  if (idx(i) == 1)
-   c(:,:,1) = [c(:,:,1) ; X(i,:)];
-  elseif (idx(i)==2)
-    c(:,:,2) = [c(:,:,2) ; X(i,:)];
-  elseif (idx(i)==3)
-    c(:,:,3) = [c(:,:,3) ; X(i,:)];
-  end
+for i=1:K
+  closest_number = (idx==i);
+  closest_x = X.*closest_number;    
+  centroid = sum(closest_x) ./ sum(closest_number);
+  centroids(i,:) = centroid;
 end
 
-%centroidsds=[mean(c1);mean(c2);mean(c3)]
+
 
 
 % =============================================================
